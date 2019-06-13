@@ -1,0 +1,30 @@
+package io.javabrains.springbootstarter.topic;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class TopicService {
+
+	List<topic> topics = Arrays.asList(
+			new topic("spring","Spring Framework", "Spring Framework Descrioption"));
+
+public List<topic> getAllTopics(){
+	return topics;
+	
+}
+
+public topic getTopic(String id) {
+	return topics.parallelStream().filter(t -> t.getId().equals(id)).findFirst().get();
+	//parallel stream?
+	
+}
+
+public void addTopic(topic topic) {
+	topics.add(topic);	
+}
+
+
+}
